@@ -57,7 +57,7 @@ Source code (MIT): https://github.com/Keyslah/Bullseye-Palette-Picker
 | --- | --- |
 | Category | **Art & Design** (Shopping also fits) |
 | Language | English |
-| Store icon (if asked) | `extension/assets/icon-128.png` |
+| Store icon (128×128) | `store-icon-128.png` (the extension's four-tile icon at 96×96 with 16 px transparent padding, per Google's store-icon guidelines) |
 | Screenshot (1280×800) | `screenshot-1280x800.png` (the only screenshot) |
 | Small promo tile (440×280, optional) | `promo-small-440x280.png` (name and icon only; the store lists items that have one ahead of items that do not) |
 | Marquee promo tile | Leave empty |
