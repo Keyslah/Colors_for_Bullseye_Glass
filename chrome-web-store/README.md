@@ -81,32 +81,32 @@ Colors for Bullseye Glass turns a photo the user chooses into a palette of match
 
 contextMenus
 ```text
-Adds two right-click commands: "Create Bullseye palette" on images and image links, and "Create Bullseye palette from visible page" on pages. They send the chosen image to the extension's side panel.
+Adds two right-click commands: "Create Bullseye palette" on images and image links, and "Create Bullseye palette from visible page" on pages. Each runs only when the user chooses it, and sends the chosen photo, or a capture of the visible page, to the side panel.
 ```
 
 sidePanel
 ```text
-The extension opens in Chrome's side panel beside the page the user is browsing, so the source photo and matching glass can be compared while browsing. The toolbar button opens it.
+Shows the picker in Chrome's side panel next to the page the user is browsing, so the source photo and matching Bullseye glass can be compared while browsing. The panel opens only when the user clicks the toolbar button or a right-click command.
 ```
 
 storage
 ```text
-Saves the user's work on their own device: the current photo workspace, working cart, saved settings, and a short log of recent cart requests (to prevent duplicate additions) in chrome.storage.local. A right-click image hand-off is held briefly in chrome.storage.session. Nothing is synced or uploaded.
+Stores the user's own work on their device in chrome.storage.local: the current photo workspace, the working cart, saved settings, and a short log of recent cart requests that prevents duplicate additions. A right-click image is held briefly in chrome.storage.session. Nothing is synced or uploaded.
 ```
 
 activeTab
 ```text
-Used only after the user invokes the extension on a tab: to capture the visible page when they choose Capture or "Create Bullseye palette from visible page", and to find the photo inside a right-clicked image link (for example, Pinterest hover overlays).
+Used only after the user clicks the toolbar button or a right-click command on a tab: to capture the visible page for "Capture" or "Create Bullseye palette from visible page", and to read the photo inside a right-clicked image link, such as hover overlays on Pinterest. The extension has no access to the page before that click.
 ```
 
 scripting
 ```text
-Runs the extension's own bundled functions (no remote code) in two cases: (1) after a right-click on an image link, a one-time lookup of the photo inside that link on the current tab, under activeTab; (2) in a shop.bullseyeglass.com tab, to check whether the user is signed in and, when the user clicks the matching button, to read, add to, or empty their Bullseye cart through the store's own cart API.
+Runs the extension's own bundled code, not remote code, in two cases. (1) After a right-click on an image link, a one-time lookup of the photo inside that link on the current tab. (2) On shop.bullseyeglass.com: checking whether the user is signed in, and, only when the user clicks a cart button, reading, adding to or emptying their Bullseye cart through the store's own cart API.
 ```
 
-Host permissions
+Host permission justification
 ```text
-https://shop.bullseyeglass.com/* is required to check Bullseye sign-in, show current product availability and prices, and read, add to, or empty the user's own Bullseye cart when they click the matching button. The optional https://*/* and http://*/* patterns are not granted at install. When the user picks a web image whose host will not serve it otherwise, the extension asks Chrome for access to that one image host (for example https://i.pinimg.com/*) only to download that image for local color analysis. Users can decline and use file import, paste, or capture instead.
+https://shop.bullseyeglass.com/* is needed to check Bullseye sign-in, show current product availability and prices, and read, add to or empty the user's own Bullseye cart when they click the matching button. The optional https://*/* and http://*/* permissions are not granted at install. If a selected web image cannot be downloaded directly, the picker offers to allow access to that one image host. Chrome asks the user to confirm, and the access is used only to download that image for local color analysis. The user can decline and use file import, paste or capture instead.
 ```
 
 **Remote code:** No, I am not using remote code.
