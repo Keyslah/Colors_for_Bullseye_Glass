@@ -50,6 +50,7 @@ GOOD TO KNOW
 • Bullseye confirms stock, prices and limits when you send a cart.
 
 Independent project: not affiliated with, endorsed by, or sponsored by Bullseye Glass Co. Product photography © Bullseye Glass Co., used to identify and promote Bullseye products.
+Screenshot illustration © Samji illustrator, used with permission. LinkedIn: https://www.linkedin.com/in/samji-illustrator/ | Instagram: https://www.instagram.com/samji_illustrator/ | Behance: https://www.behance.net/samji_illustrator
 Source code (MIT): https://github.com/Keyslah/Bullseye-Palette-Picker
 ```
 
