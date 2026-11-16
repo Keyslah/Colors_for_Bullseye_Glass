@@ -1,8 +1,8 @@
-# Bullseye Palette Picker
+# Colors for Bullseye Glass
 
-Bullseye Palette Picker is a Chrome extension that helps you find Bullseye glass colors that match an image.
+Colors for Bullseye Glass is a Chrome extension that helps you find Bullseye glass colors that match an image.
 
-![Bullseye Palette Picker: a large portrait image beside its editable palette and compact glass list](https://raw.githubusercontent.com/Keyslah/Bullseye-Palette-Picker/main/docs/picker-preview.png)
+![Colors for Bullseye Glass: a source image beside its editable palette and compact glass list](https://raw.githubusercontent.com/Keyslah/Bullseye-Palette-Picker/main/docs/picker-preview.png)
 
 Product reference photography © Bullseye Glass Co.
 
@@ -17,11 +17,11 @@ No compilation, API key, or Node installation is required to use the extension. 
 
 Chrome documents these [unpacked-extension steps](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
 
-**Updating an existing installation:** close picker/cart tabs, replace the files in the **same installed extension folder**, click **Reload** on its card at `chrome://extensions`, confirm **0.6.8**, then reopen the picker. Refresh Pinterest or any source page already open. Keep the existing Chrome installation and folder; do not remove and reinstall for an ordinary update. Your settings, palettes, photos, named carts and working cart remain in that installation. An unpacked extension does not automatically update when this GitHub repository changes.
+**Updating an existing installation:** close picker/cart tabs, replace the files in the **same installed extension folder**, click **Reload** on its card at `chrome://extensions`, confirm **0.6.9**, then reopen the picker. Refresh Pinterest or any source page already open. Keep the existing Chrome installation and folder; do not remove and reinstall for an ordinary update. Your settings, palettes, photos, named carts and working cart remain in that installation. An unpacked extension does not automatically update when this GitHub repository changes.
 
 The update preserves your current palette and restores named palettes as saved. To apply the new automatic sampling rules to the current image, press **Remix**. This replaces its automatic samples while keeping manually added or edited colors and their choices; existing named palettes are retained.
 
-The prepared [**Bullseye-Palette-Picker-v0.6.8.zip**](https://github.com/Keyslah/Bullseye-Palette-Picker/releases/download/v0.6.8/Bullseye-Palette-Picker-v0.6.8.zip) has `manifest.json` at its root. If you installed from the repository's `extension` subfolder, replace files inside that subfolder. For a first installation, extract the prepared ZIP to a permanent folder and load that root folder.
+The prepared ZIP attached to the [latest release](https://github.com/Keyslah/Bullseye-Palette-Picker/releases/latest) has `manifest.json` at its root. If you installed from the repository's `extension` subfolder, replace files inside that subfolder. For a first installation, extract the prepared ZIP to a permanent folder and load that root folder.
 
 **Moving folders, reinstalling, or changing computers:** first use **Settings → Back up my data** in the old installation. Install the extension at the new location and use **Restore my data** there. Restore reloads the picker; close and reopen any other picker/cart tabs. The backup includes your photos, palette choices, settings presets and both working/saved carts. Uninstalling or loading a different folder can create a different storage location; the extension cannot automatically read another installation's private data.
 
@@ -86,7 +86,7 @@ For a manually chosen or previously saved near-black neutral target (`L* <= 20` 
 
 A result reads, for example, **“Spring Green at 75% thickness.”** On the main palette bar, above the source image, the picker displays the project's requested reference without opening a menu:
 
-**100% thickness = 6 mm solid glass, 16 mm fine frit \*Rough estimate**
+**100% thickness = 6 mm solid glass = 16 mm fine frit \*Rough estimate**
 
 This is an **estimated thickness guide based on photographed color strength**, not a measurement of the source glass or a Bullseye-certified firing recipe. Percentages remain visible for **every purchase format, including Sheets**. Each frit form uses samples from its own photograph while retaining the glass color's original shared reference. Sheets retain the original Medium matching reference; their sheet photographs do not show unrelated sample coordinates or swatches. Choosing a form does not create a physical calibration. A sheet's actual millimeter thickness is shown separately in its purchase-size label. The fine-frit value above is the project's requested reference text.
 
@@ -116,7 +116,7 @@ npm run check
 npm run package
 ```
 
-Development requires Node 20 or later. Packaging also uses Python 3's standard library and creates `dist/Bullseye-Palette-Picker-v0.6.8.zip`, with the manifest at the ZIP root. Update an existing installation in place; for a new installation, extract and load the ZIP's root folder. Version 0.6.8 retains the reviewed **0.3.0 base catalog byte for byte**, including its photographs, RGB/Lab samples, and source timestamps. Purchase options and form-specific samples live in separate data indexes.
+Development requires Node 20 or later. Packaging also uses Python 3's standard library and creates `dist/Colors-for-Bullseye-Glass-v0.6.9.zip`, with the manifest at the ZIP root. Update an existing installation in place; for a new installation, extract and load the ZIP's root folder. Version 0.6.9 retains the reviewed **0.3.0 base catalog byte for byte**, including its photographs, RGB/Lab samples, and source timestamps. Purchase options and form-specific samples live in separate data indexes.
 
 To refresh public purchase-format records or reproduce them from an existing source cache:
 
@@ -171,6 +171,10 @@ Clear is a separate cart filter for Clear Transparent, Clear Transparent Tekta, 
 Click any photo in the cart editor, Add Colors results or saved-cart preview for a large image. The image follows the selected frit grade or sheet product. Variant-assigned photos take priority when provided; otherwise the photo is shared by that product's package sizes. More images from that listing can be browsed in the preview. Remote photos require an internet connection. No photo-sampling data is changed.
 
 ## Release notes
+
+### v0.6.9: Colors for Bullseye Glass
+
+The extension is named **Colors for Bullseye Glass**. The thickness reference on the palette bar is much larger and reads **100% thickness = 6 mm solid glass = 16 mm fine frit \*Rough estimate**. Settings, palettes, photos and carts in an installation updated in place are kept. Backup files carry the new name; **Restore my data** accepts only backups made by this version or later.
 
 ### v0.6.8: unavailable choices and prominent colors
 

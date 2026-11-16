@@ -1,5 +1,5 @@
 /**
- * Purpose: receive image context-menu clicks and hand photos to the palette picker.
+ * Purpose: receive image context-menu clicks and hand photos to the picker page.
  * Setup: Manifest V3 service worker; uses the user's current Chrome window/session.
  * Destructive behavior: explicit send/empty requests change the native website cart.
  * Constraints: photos stay local; never checks out or reads credentials.

@@ -166,7 +166,7 @@ test('a blocked opening reports the problem and closes a connection that arrives
     return request;
   }});
   const {listCarts} = await freshModule();
-  await assert.rejects(listCarts(), /Close other Bullseye picker tabs/);
+  await assert.rejects(listCarts(), /Close other Colors for Bullseye Glass tabs/);
   request.result = {close() { closed++; }};
   request.onsuccess();
   assert.equal(closed, 1);

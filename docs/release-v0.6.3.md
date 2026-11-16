@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.3
+# Colors for Bullseye Glass v0.6.3
 
 ## Changes
 
@@ -21,7 +21,7 @@ The release workflow runs the regressions before publication. The ZIP is checked
 ## Update the installed extension
 
 1. Extract `Bullseye-Palette-Picker-v0.6.3.zip` into the **same folder currently installed in Chrome**, replacing the old files. The ZIP has `manifest.json` at its root.
-2. Open `chrome://extensions`, click **Reload** on Bullseye Palette Picker, and confirm version **0.6.3**.
+2. Open `chrome://extensions`, click **Reload** on Colors for Bullseye Glass, and confirm version **0.6.3**.
 3. Close existing picker and cart tabs, then reopen them from the extension. Refresh already-open source pages before using their image context menu again.
 
 Keep the same extension installation and folder so Chrome retains the local saved work. Do not uninstall the existing extension. Publishing to GitHub does not update an unpacked extension automatically.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Bullseye Palette Picker",
-  "version": "0.6.8",
+  "name": "Colors for Bullseye Glass",
+  "version": "0.6.9",
   "description": "Match photo colors to Bullseye sheets or frit, save palettes and carts, and send selected glass to your signed-in cart.",
   "minimum_chrome_version": "116",
   "permissions": ["contextMenus", "sidePanel", "storage", "activeTab", "scripting"],
@@ -10,7 +10,7 @@
   "background": { "service_worker": "service-worker.js", "type": "module" },
   "side_panel": { "default_path": "picker.html" },
   "action": {
-    "default_title": "Open Bullseye Palette Picker",
+    "default_title": "Open Colors for Bullseye Glass",
     "default_icon": { "16": "assets/icon-16.png", "32": "assets/icon-32.png", "48": "assets/icon-48.png", "128": "assets/icon-128.png" }
   },
   "icons": { "16": "assets/icon-16.png", "32": "assets/icon-32.png", "48": "assets/icon-48.png", "128": "assets/icon-128.png" },

@@ -47,7 +47,7 @@ def read_public(url, cache, *, offline=False, refresh=False):
     else:
         if offline:
             raise FileNotFoundError(f'Cached source missing: {url}')
-        request = urllib.request.Request(url, headers={'User-Agent':'BullseyePalettePicker/0.4 (public product format catalog)'})
+        request = urllib.request.Request(url, headers={'User-Agent':'ColorsForBullseyeGlass/0.4 (public product format catalog)'})
         for attempt in range(4):
             try:
                 with urllib.request.urlopen(request, timeout=35) as response:

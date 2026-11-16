@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.8
+# Colors for Bullseye Glass v0.6.8
 
 ## Unavailable glass stays in your work
 
@@ -36,7 +36,7 @@ Reordering keeps the same color values, source points, active color, selected gl
 
 1. Close picker and cart tabs.
 2. Extract `Bullseye-Palette-Picker-v0.6.8.zip` into the **same installed extension folder**, replacing its files. If Chrome loads the repository's `extension` subfolder, replace the files inside that subfolder.
-3. Open `chrome://extensions`, click **Reload** on Bullseye Palette Picker and confirm **0.6.8**.
+3. Open `chrome://extensions`, click **Reload** on Colors for Bullseye Glass and confirm **0.6.8**.
 4. Reopen the picker/cart. Refresh existing source-image pages before using their right-click image command.
 
 Your current palette and named palettes are preserved. Press **Remix** on the current image to use the new automatic sampling rules; manually added or edited colors and their choices are kept. Loading the update does not resample a saved palette.

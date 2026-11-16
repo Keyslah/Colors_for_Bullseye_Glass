@@ -14,7 +14,7 @@
 #source-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--muted)}
 .palette-panel{padding:5px 8px;margin:0;border-bottom:1px solid var(--line)}
 .palette-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px}
-.palette-flow>.thickness-reference{flex:1 1 300px;min-width:0;max-width:100%;margin:0;font-size:11px;line-height:1.35;text-align:right}
+.palette-flow>.thickness-reference{flex:1 1 auto;min-width:0;max-width:100%;margin:0;font-size:20px;line-height:1.3;text-align:right}
 .palette-flow>.full-palette-control{order:0;margin:0 4px 0 0;padding:0;white-space:nowrap;font-size:11px}
 .palette-flow>.prominence-control{margin-left:3px;font-size:10px}
 .unavailable-note{font-size:10px;font-weight:500;color:#884938;white-space:nowrap}

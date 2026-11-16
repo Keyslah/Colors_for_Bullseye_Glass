@@ -1,7 +1,7 @@
 /**
  * Purpose: produce a load-unpacked Chrome extension ZIP from the reviewed extension folder.
  * Setup: run npm run package; requires Python 3 for standard-library ZIP support.
- * Destructive behavior: replaces only dist/Bullseye-Palette-Picker-v<version>.zip.
+ * Destructive behavior: replaces only dist/Colors-for-Bullseye-Glass-v<version>.zip.
  * Constraints: excludes developer caches, tests, source downloads, and personal data.
  */
 import fs from 'node:fs';
@@ -10,7 +10,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'extension/manifest.json'), 'utf8'));
-const output = path.join(root, 'dist', `Bullseye-Palette-Picker-v${manifest.version}.zip`);
+const output = path.join(root, 'dist', `Colors-for-Bullseye-Glass-v${manifest.version}.zip`);
 fs.mkdirSync(path.dirname(output), {recursive: true});
 const program = `import pathlib,sys,zipfile
 root=pathlib.Path(sys.argv[1]); output=pathlib.Path(sys.argv[2])

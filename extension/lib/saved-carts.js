@@ -81,7 +81,7 @@ function database() {
       catch (error) { fail(error); request.transaction?.abort(); }
     };
     request.onerror = () => fail(request.error);
-    request.onblocked = () => fail(new Error('Close other Bullseye picker tabs, then try opening saved carts again.'));
+    request.onblocked = () => fail(new Error('Close other Colors for Bullseye Glass tabs, then try opening saved carts again.'));
     request.onsuccess = () => {
       const db = request.result;
       if (failed) { db.close(); return; }

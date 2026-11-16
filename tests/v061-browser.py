@@ -451,7 +451,7 @@ try:
         passed('No uncaught browser JavaScript errors')
         context.close();context=None
 
-    archive=ROOT/f'dist/Bullseye-Palette-Picker-v{VERSION}.zip'
+    archive=ROOT/f'dist/Colors-for-Bullseye-Glass-v{VERSION}.zip'
     with zipfile.ZipFile(archive) as packed:
         assert packed.testzip() is None
         assert json.loads(packed.read('manifest.json'))['version']==VERSION

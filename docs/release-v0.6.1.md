@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.1
+# Colors for Bullseye Glass v0.6.1
 
 - Landscape comparison cards have the glass photograph above the name, photo-thickness estimate and purchase control. Every match fits the available width; additional cards wrap onto another row instead of disappearing into a sideways scroller. The normal image size leaves room for the comparison cards. Portrait comparison order is unchanged.
 - A plain checkbox is next to each glass name. There is no visible Selected label, and selecting glass does not require opening its purchase controls.

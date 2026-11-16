@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.2
+# Colors for Bullseye Glass v0.6.2
 
 ## Photograph correction
 
@@ -14,4 +14,4 @@ The new live-photo suite fetches and decodes all 564 frit photographs (141 color
 
 ## Update
 
-Extract `Bullseye-Palette-Picker-v0.6.2.zip` into the same installed extension folder, replacing its files. Do not uninstall. At `chrome://extensions`, click **Reload** on Bullseye Palette Picker and confirm **0.6.2**. Close and reopen existing picker/cart tabs, and refresh already-open source pages. The ZIP contains `manifest.json` at its root. Photos load directly from Bullseye's public image CDN.
+Extract `Bullseye-Palette-Picker-v0.6.2.zip` into the same installed extension folder, replacing its files. Do not uninstall. At `chrome://extensions`, click **Reload** on Colors for Bullseye Glass and confirm **0.6.2**. Close and reopen existing picker/cart tabs, and refresh already-open source pages. The ZIP contains `manifest.json` at its root. Photos load directly from Bullseye's public image CDN.

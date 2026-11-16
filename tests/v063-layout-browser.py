@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--audit-only', action='store_true')
 args = parser.parse_args()
 prefix = 'v063-layout-before' if args.audit_only else 'v063-layout'
-REFERENCE = '100% thickness = 6 mm solid glass, 16 mm fine frit *Rough estimate'
+REFERENCE = '100% thickness = 6 mm solid glass = 16 mm fine frit *Rough estimate'
 checks, errors, audits, main_audits = [], [], [], []
 
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>Bullseye Palette Picker</title>
+    <title>Colors for Bullseye Glass</title>
     <link rel="stylesheet" href="./picker.css">
     <link rel="stylesheet" href="./picker-v5.css">
     <link rel="stylesheet" href="./picker-v6.css">
@@ -12,7 +12,7 @@
   </head>
   <body>
     <header class="app-header">
-      <h1 class="visually-hidden">Bullseye Palette Picker</h1>
+      <h1 class="visually-hidden">Colors for Bullseye Glass</h1>
       <div class="compact-toolbar" id="main-toolbar" aria-label="Picker controls">
         <button class="button secondary-button" id="refresh-settings" type="button" title="Reset settings only; keep the image, colors and points">Refresh</button>
         <button class="text-button" id="sign-in" type="button" hidden>Sign in</button>
@@ -37,7 +37,7 @@
         <details class="toolbar-menu" id="account-menu"><summary>Account</summary><div class="menu-content account-row"><span class="account-status" id="account-status">Checking Bullseye sign-in…</span><button class="text-button" id="check-account" type="button" hidden>Check again</button><a class="text-button" id="view-bullseye-cart" href="https://shop.bullseyeglass.com/cart" target="_blank" rel="noopener noreferrer" hidden>View cart ↗</a></div></details>
         <div class="view-tabs" role="tablist" aria-label="Glass views"><button class="view-tab" id="palette-tab" type="button" role="tab" aria-selected="true" aria-controls="glass-results">Matches</button><button class="view-tab" id="library-tab" type="button" role="tab" aria-selected="false" aria-controls="glass-results">All glass <span id="library-count" class="visually-hidden"></span></button></div>
         <input id="glass-search" type="search" placeholder="Find glass…" aria-label="Search glass by name or code">
-        <details class="toolbar-menu" id="about-menu"><summary aria-label="About this picker">ⓘ</summary><div class="menu-content"><h2>Bullseye Palette Picker</h2><span id="selection-total" class="visually-hidden"></span><p class="photo-note">A photo-based color-strength estimate, not measured depth. Each frit form uses its own photograph and the shared reference for that glass color.</p><p>Independent tool · Product photos © Bullseye Glass Co.</p><a href="https://shop.bullseyeglass.com/" target="_blank" rel="noopener noreferrer">Bullseye store ↗</a></div></details>
+        <details class="toolbar-menu" id="about-menu"><summary aria-label="About this picker">ⓘ</summary><div class="menu-content"><h2>Colors for Bullseye Glass</h2><span id="selection-total" class="visually-hidden"></span><p class="photo-note">A photo-based color-strength estimate, not measured depth. Each frit form uses its own photograph and the shared reference for that glass color.</p><p>Independent tool · Product photos © Bullseye Glass Co.</p><a href="https://shop.bullseyeglass.com/" target="_blank" rel="noopener noreferrer">Bullseye store ↗</a></div></details>
       </div>
       <button class="button secondary-button cart-nav" id="open-cart" type="button" aria-label="Cart, 0 items">Cart <span id="cart-count" class="cart-badge" aria-live="polite" aria-atomic="true">0</span></button>
     </header>
@@ -49,7 +49,7 @@
         <button class="text-button" id="open-color-editor" type="button">Edit color</button><button class="text-button" id="show-alternatives" type="button">Alternatives</button>
         <label class="full-palette-control prominence-control" title="Use the image’s prominent color theme for new samples and Remix. Manually added colors stay yours."><input id="prominence" type="checkbox" checked>Prominence</label>
         <div class="alternatives-heading" id="alternatives-heading" hidden><span id="alternatives-label" class="visually-hidden"></span><button class="text-button" id="back-to-palette" type="button">Back to matches</button></div>
-        <p class="thickness-reference" id="thickness-reference">100% thickness = 6 mm solid glass, 16 mm fine frit *Rough estimate</p>
+        <p class="thickness-reference" id="thickness-reference">100% thickness = 6 mm solid glass = 16 mm fine frit *Rough estimate</p>
       </div>
     </section>
     <main class="app-main">

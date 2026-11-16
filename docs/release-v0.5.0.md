@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.5.0
+# Colors for Bullseye Glass v0.5.0
 
 Reconstructed from the saved v0.4.0 source and the recovered v5 requirements. This release is not a claim that the original interrupted temporary workspace was recovered.
 
@@ -17,7 +17,7 @@ Reconstructed from the saved v0.4.0 source and the recovered v5 requirements. Th
 
 Extract `Bullseye-Palette-Picker-v0.5.0.zip`. Its root contains `manifest.json`.
 
-For an existing unpacked installation, replace the contents of the same installed extension folder. Do not remove the extension or switch its installed folder. Open `chrome://extensions`, click **Reload** on Bullseye Palette Picker, confirm **0.5.0**, refresh already-open source pages such as Pinterest, and close/reopen the picker and cart tabs. Keeping the same extension installation and folder preserves local palettes and carts.
+For an existing unpacked installation, replace the contents of the same installed extension folder. Do not remove the extension or switch its installed folder. Open `chrome://extensions`, click **Reload** on Colors for Bullseye Glass, confirm **0.5.0**, refresh already-open source pages such as Pinterest, and close/reopen the picker and cart tabs. Keeping the same extension installation and folder preserves local palettes and carts.
 
 For a new installation, enable Developer mode at `chrome://extensions`, choose Load unpacked, and select the extracted folder containing `manifest.json`.
 

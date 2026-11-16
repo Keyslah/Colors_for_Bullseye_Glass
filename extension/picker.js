@@ -827,7 +827,7 @@ async function exportPersonalData() {
     if(!isCartPage && workspaceReady)backup.local.bullseyeProjectV1=workspaceSnapshot();
     const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
     const url=URL.createObjectURL(blob),link=document.createElement('a');
-    link.href=url;link.download=`Bullseye-personal-data-${new Date().toISOString().slice(0,10)}.json`;
+    link.href=url;link.download=`Colors-for-Bullseye-Glass-personal-data-${new Date().toISOString().slice(0,10)}.json`;
     link.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
     notify('Backup downloaded with your settings, palettes, photos and carts.');
   } catch(error) {notify(error.message || 'Your data could not be backed up.',true);}
@@ -1301,7 +1301,7 @@ async function initialize() {
     if(photosResult.status==='rejected')notify('Cart product photos could not load. Reference photos are used where available.',true);
     if(samplesResult.status==='rejected')notify('Frit photo samples could not load. Reload the extension to restore photo matching.',true);
     checkAccount(true);
-    if(isCartPage){document.title='Carts | Bullseye Palette Picker';await cartLibrary.openPage(new URLSearchParams(location.search).get('mode'));return;}
+    if(isCartPage){document.title='Carts | Colors for Bullseye Glass';await cartLibrary.openPage(new URLSearchParams(location.search).get('mode'));return;}
     bridge.subscribePendingImage((image) => handlePendingImage(image));
     let pending = null;
     try { pending = await bridge.getPendingImage(); }
@@ -1314,7 +1314,7 @@ async function initialize() {
     if(!saved && preferences?.showFullPalette===false && activeTarget()){state.view='alternatives';renderResults();}
     persist();
   } catch (error) {
-    console.error('Palette Picker could not start:', error);
+    console.error('Colors for Bullseye Glass could not start:', error);
     $('product-grid').replaceChildren();
     $('glass-results').hidden = true; $('empty-state').hidden = false;
     setEmpty('The picker could not load.', 'Your saved data has been kept. Reload the extension and reopen this page.', 'Reload', () => window.location.reload());

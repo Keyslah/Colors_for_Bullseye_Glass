@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXT = ROOT / "extension"
 version = json.loads((EXT / "manifest.json").read_text())["version"]
-archive_path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "dist" / f"Bullseye-Palette-Picker-v{version}.zip"
+archive_path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "dist" / f"Colors-for-Bullseye-Glass-v{version}.zip"
 expected = {p.relative_to(EXT).as_posix(): p for p in EXT.rglob("*") if p.is_file()}
 expected.update({name: ROOT / name for name in ["README.md", "ATTRIBUTION.md", "PRIVACY.md", "LICENSE"]})
 with zipfile.ZipFile(archive_path) as archive:

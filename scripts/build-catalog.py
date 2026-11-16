@@ -53,7 +53,7 @@ def fetch(url: str) -> bytes:
         raise ValueError(f"An HTTPS source is required: {url}")
     request = urllib.request.Request(
         url,
-        headers={"User-Agent": "BullseyePalettePicker/0.3 (public catalog builder)"},
+        headers={"User-Agent": "ColorsForBullseyeGlass/0.3 (public catalog builder)"},
     )
     for attempt in range(3):
         try:

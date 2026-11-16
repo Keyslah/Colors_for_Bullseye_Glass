@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.4
+# Colors for Bullseye Glass v0.6.4
 
 ## Changes
 

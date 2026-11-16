@@ -188,7 +188,7 @@ try:
         backup_path = temporary / 'ui-backup.json'
         download.save_as(backup_path)
         ui_backup = json.loads(backup_path.read_text())
-        assert ui_backup['format'] == 'bullseye-palette-picker-personal-data'
+        assert ui_backup['format'] == 'colors-for-bullseye-glass-personal-data'
         assert ui_backup['local']['bullseyeProjectV1']['glassTypes']['opalescent'] is False
         assert ui_backup['local']['bullseyeProjectV1']['sourceDataUrl'].startswith('data:image/png;base64,')
         assert len(ui_backup['palettes']) == len(ui_backup['carts']) == 1

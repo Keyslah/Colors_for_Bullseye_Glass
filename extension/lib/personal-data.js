@@ -10,7 +10,7 @@ import {normalizeSettings, SETTINGS_KEY} from './settings.js';
 import {PRESETS_KEY} from './settings-presets.js';
 import {normalizeCartItems, normalizeCartName} from './saved-carts.js';
 
-export const PERSONAL_DATA_FORMAT = 'bullseye-palette-picker-personal-data';
+export const PERSONAL_DATA_FORMAT = 'colors-for-bullseye-glass-personal-data';
 export const PERSONAL_DATA_VERSION = 1;
 const PROJECT_KEY = 'bullseyeProjectV1';
 const WORKING_CART_KEY = 'bullseyeWorkingCartV1';
@@ -101,7 +101,7 @@ export function normalizePersonalDataBackup(value) {
     catch { throw new Error('This backup is not valid JSON.'); }
   }
   object(value, 'Backup');
-  if (value.format !== PERSONAL_DATA_FORMAT) throw new Error('Choose a Bullseye Palette Picker personal-data backup.');
+  if (value.format !== PERSONAL_DATA_FORMAT) throw new Error('Choose a Colors for Bullseye Glass personal-data backup.');
   if (value.version !== PERSONAL_DATA_VERSION) throw new Error('This backup version is not supported. Update the extension before restoring it.');
   const source = object(value.local, 'Backup settings'), local = {};
   if (Object.hasOwn(source, PROJECT_KEY)) local[PROJECT_KEY] = source[PROJECT_KEY] === null ? null : workspace(source[PROJECT_KEY]);
@@ -153,7 +153,7 @@ function openDatabase(name, stores) {
       } catch (error) { fail(error); request.transaction?.abort(); }
     };
     request.onerror = () => fail(request.error);
-    request.onblocked = () => fail(new Error('Close other Bullseye picker tabs and try again.'));
+    request.onblocked = () => fail(new Error('Close other Colors for Bullseye Glass tabs and try again.'));
     request.onsuccess = () => {
       if (failed) { request.result.close(); return; }
       resolve(request.result);

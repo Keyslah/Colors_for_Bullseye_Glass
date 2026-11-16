@@ -19,7 +19,7 @@ const readJson = name => JSON.parse(fs.readFileSync(path.join(extension, name), 
 const manifest = readJson('manifest.json');
 assert.equal(manifest.version, JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version);
 assert.equal(manifest.manifest_version, 3);
-assert.equal(manifest.name, 'Bullseye Palette Picker');
+assert.equal(manifest.name, 'Colors for Bullseye Glass');
 assert.ok(manifest.permissions.includes('contextMenus') && manifest.permissions.includes('sidePanel'));
 for (const file of [manifest.background.service_worker, manifest.side_panel.default_path, ...Object.values(manifest.icons)]) {
   assert.ok(fs.existsSync(path.join(extension, file)), `Missing extension file: ${file}`);

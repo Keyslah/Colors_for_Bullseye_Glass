@@ -1,4 +1,4 @@
-# Bullseye Palette Picker v0.6.7
+# Colors for Bullseye Glass v0.6.7
 
 ## Cart controls
 
@@ -23,7 +23,7 @@ The extension keeps its existing identity, storage keys and database names. Upda
 
 1. Close open picker and cart tabs.
 2. Extract `Bullseye-Palette-Picker-v0.6.7.zip` into the **same installed extension folder**, replacing its files. If Chrome loads the repository's `extension` subfolder, replace files inside that subfolder.
-3. Open `chrome://extensions`, click **Reload** on Bullseye Palette Picker, and confirm **0.6.7**.
+3. Open `chrome://extensions`, click **Reload** on Colors for Bullseye Glass, and confirm **0.6.7**.
 4. Reopen the picker and cart. Refresh existing source-image pages before using the right-click command.
 
 Keep the same installation for ordinary updates. Removing it or loading each version from a new folder can create a different storage location. Use a personal-data backup before changing folders or computers. The new backup buttons become available after updating to this version.

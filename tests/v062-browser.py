@@ -181,7 +181,7 @@ try:
         assert not errors,errors
         done('No uncaught browser errors during actual-photo interactions')
         context.close();context=None
-    with zipfile.ZipFile(ROOT/f'dist/Bullseye-Palette-Picker-v{VERSION}.zip') as archive:
+    with zipfile.ZipFile(ROOT/f'dist/Colors-for-Bullseye-Glass-v{VERSION}.zip') as archive:
         assert archive.testzip() is None
         for f in EXT.rglob('*'):
             if f.is_file():assert archive.read(f.relative_to(EXT).as_posix())==f.read_bytes(),f

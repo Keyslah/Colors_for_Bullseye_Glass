@@ -1,10 +1,10 @@
 # Privacy
 
-Bullseye Palette Picker processes image pixels and compares colors inside your browser. It has no analytics, advertising, remote image-analysis service, or developer-operated server.
+Colors for Bullseye Glass processes image pixels and compares colors inside your browser. It has no analytics, advertising, remote image-analysis service, or developer-operated server.
 
 ## Chrome Web Store User Data Policy
 
-The use of information received by Bullseye Palette Picker adheres to the [Chrome Web Store User Data Policy](https://developer.chrome.com/docs/webstore/program-policies/policies), including the [Limited Use](https://developer.chrome.com/docs/webstore/program-policies/limited-use) requirements. Data is used only for the extension's single purpose: matching colors from images you choose to Bullseye glass and preparing your selected Bullseye cart. It is not sold, not used or transferred for unrelated purposes such as advertising, and not used to determine creditworthiness or for lending.
+The use of information received by Colors for Bullseye Glass adheres to the [Chrome Web Store User Data Policy](https://developer.chrome.com/docs/webstore/program-policies/policies), including the [Limited Use](https://developer.chrome.com/docs/webstore/program-policies/limited-use) requirements. Data is used only for the extension's single purpose: matching colors from images you choose to Bullseye glass and preparing your selected Bullseye cart. It is not sold, not used or transferred for unrelated purposes such as advertising, and not used to determine creditworthiness or for lending.
 
 ## Stored data
 
