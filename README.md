@@ -4,6 +4,8 @@ Colors for Bullseye Glass is a Chrome extension that helps you find Bullseye gla
 
 ![Colors for Bullseye Glass: a source image beside its editable palette and compact glass list](https://raw.githubusercontent.com/Keyslah/Bullseye-Palette-Picker/main/docs/picker-preview.png)
 
+Illustration © Samji illustrator, used with permission: [LinkedIn](https://www.linkedin.com/in/samji-illustrator/) | [Instagram](https://www.instagram.com/samji_illustrator/) | [Behance](https://www.behance.net/samji_illustrator)
+
 Product reference photography © Bullseye Glass Co.
 
 ## Install or update in Chrome
