@@ -2,7 +2,7 @@
 
 Colors for Bullseye Glass is a Chrome extension that helps you find Bullseye glass colors that match an image.
 
-![Colors for Bullseye Glass: a source image beside its editable palette and compact glass list](https://raw.githubusercontent.com/Keyslah/Bullseye-Palette-Picker/main/docs/picker-preview.png)
+![Colors for Bullseye Glass: a source image beside its editable palette and compact glass list](https://raw.githubusercontent.com/Keyslah/Colors_for_Bullseye_Glass/main/docs/picker-preview.png)
 
 Illustration © Samji illustrator, used with permission: [LinkedIn](https://www.linkedin.com/in/samji-illustrator/) | [Instagram](https://www.instagram.com/samji_illustrator/) | [Behance](https://www.behance.net/samji_illustrator)
 
@@ -12,7 +12,7 @@ Product reference photography © Bullseye Glass Co.
 
 No compilation, API key, or Node installation is required to use the extension. A Bullseye account is required for its direct cart action.
 
-1. [Download the repository ZIP](https://github.com/Keyslah/Bullseye-Palette-Picker/archive/refs/heads/main.zip) and extract it to a folder you will keep.
+1. [Download the repository ZIP](https://github.com/Keyslah/Colors_for_Bullseye_Glass/archive/refs/heads/main.zip) and extract it to a folder you will keep.
 2. Open `chrome://extensions` in Chrome and turn on **Developer mode**.
 3. Click **Load unpacked** and select the **`extension` folder inside the extracted repository**. It contains `manifest.json`.
 4. Right-click a web image and choose **Create Bullseye palette**. The toolbar button also opens the picker.
@@ -23,7 +23,7 @@ Chrome documents these [unpacked-extension steps](https://developer.chrome.com/d
 
 The update preserves your current palette and restores named palettes as saved. To apply the new automatic sampling rules to the current image, press **Remix**. This replaces its automatic samples while keeping manually added or edited colors and their choices; existing named palettes are retained.
 
-The prepared ZIP attached to the [latest release](https://github.com/Keyslah/Bullseye-Palette-Picker/releases/latest) has `manifest.json` at its root. If you installed from the repository's `extension` subfolder, replace files inside that subfolder. For a first installation, extract the prepared ZIP to a permanent folder and load that root folder.
+The prepared ZIP attached to the [latest release](https://github.com/Keyslah/Colors_for_Bullseye_Glass/releases/latest) has `manifest.json` at its root. If you installed from the repository's `extension` subfolder, replace files inside that subfolder. For a first installation, extract the prepared ZIP to a permanent folder and load that root folder.
 
 **Moving folders, reinstalling, or changing computers:** first use **Settings → Back up my data** in the old installation. Install the extension at the new location and use **Restore my data** there. Restore reloads the picker; close and reopen any other picker/cart tabs. The backup includes your photos, palette choices, settings presets and both working/saved carts. Uninstalling or loading a different folder can create a different storage location; the extension cannot automatically read another installation's private data.
 
@@ -176,7 +176,7 @@ Click any photo in the cart editor, Add Colors results or saved-cart preview for
 
 ### v0.6.9: Colors for Bullseye Glass
 
-The extension is named **Colors for Bullseye Glass**. The thickness reference on the palette bar is much larger and reads **100% thickness = 6 mm solid glass = 16 mm fine frit \*Rough estimate**. Settings, palettes, photos and carts in an installation updated in place are kept. Backup files carry the new name; **Restore my data** accepts only backups made by this version or later.
+The extension is named **Colors for Bullseye Glass**. The thickness reference on the palette bar is much larger and reads **100% thickness = 6 mm solid glass = 16 mm fine frit \*Rough estimate**. Settings, palettes, photos and carts in an installation updated in place are kept. Backup files carry the new name; **Restore my data** accepts only backups made by this version or later. See [v0.6.9 release notes](docs/release-v0.6.9.md).
 
 ### v0.6.8: unavailable choices and prominent colors
 

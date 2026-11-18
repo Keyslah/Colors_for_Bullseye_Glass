@@ -1,6 +1,17 @@
-# Privacy
+# Privacy policy for Colors for Bullseye Glass
+
+Last updated November 16, 2026, for version 0.6.9.
 
 Colors for Bullseye Glass processes image pixels and compares colors inside your browser. It has no analytics, advertising, remote image-analysis service, or developer-operated server.
+
+## At a glance
+
+- You don't need a Bullseye account to use the picker. Sending a cart to Bullseye uses your own signed-in session on Bullseye's website.
+- The developer receives no data. There are no accounts, analytics, advertising, or tracking.
+- Your photos, palettes, settings and carts stay in your Chrome profile.
+- The picker contacts Bullseye's website to check sign-in and show product details. It reads or changes your Bullseye cart only when you ask.
+- The web address of a chosen image or captured page is saved with its palette, so you can see where a color came from.
+- You can delete any palette, cart or image. Uninstalling the extension removes its local data.
 
 ## Chrome Web Store User Data Policy
 
@@ -8,7 +19,7 @@ The use of information received by Colors for Bullseye Glass adheres to the [Chr
 
 ## Stored data
 
-The current workspace is automatically saved in `chrome.storage.local` under `bullseyeProjectV1`. The workspace includes the reduced source image (at most 1,100 pixels on its longest side), its display name and available source URL, palette colors and point positions, selected purchase format, preferred jar size, exact package choices, quantities, and which suggestions you unchecked or added manually. Material filters, tint inclusion, and image size are also retained. The cart-only page does not overwrite this photo workspace. These selection preferences keep your edits intact when automatic suggestions update. A handoff timestamp prevents a previously handled image from overwriting a reopened edited palette.
+The current workspace is automatically saved in `chrome.storage.local` under `bullseyeProjectV1`. The workspace includes the reduced source image (at most 1,100 pixels on its longest side), its display name and available source URL, palette colors and point positions, selected purchase format, preferred jar size, exact package choices, quantities, and which suggestions you unchecked or added manually. Material filters, tint inclusion, and image size are also retained. The cart-only page does not overwrite this photo workspace. These selection preferences keep your edits intact when automatic suggestions update. A handoff timestamp prevents a previously handled image from overwriting a reopened edited palette. The web address of a chosen image, or of a captured page, is saved as the palette's source. These addresses stay on your device with the workspace and any palette you save. They are never sent to the developer.
 
 The active local working cart is kept automatically under `bullseyeWorkingCartV1`. It includes its name, local identity, exact variant IDs, package choices, quantities, display information, and update time. This lets the Cart quantity badge and cart pages share the same saved state. Updates retain all existing storage identities.
 
@@ -34,7 +45,7 @@ A development web preview uses its own origin's `localStorage` for the workspace
 
 **Paste** reads a clipboard image after you invoke it; keyboard paste can also import an image. **Copy SKU list** writes the selected SKUs and quantities to the clipboard. The direct cart button does not need clipboard access.
 
-**Capture** reads the visible browser view after you invoke the extension. You can select a region or accept the whole view. The accepted image is processed and saved locally like an imported image.
+**Capture** reads the visible browser view after you invoke the extension. You can select a region or accept the whole view. The accepted image is processed and saved locally like an imported image. The address of the captured page is saved with it as its source, as described under Stored data.
 
 ## Account checks and shopping
 
@@ -70,10 +81,33 @@ An uncertain or partial addition is reported to the user instead of automaticall
 | Bullseye shop host | Read public products and customer-status indicators; use the native cart after your click |
 | Optional image-host access | Fetch an image from the particular host you select |
 
-Optional host patterns let Chrome request a particular image origin when needed; they do not grant every website at installation. The extension does not request password, cookie, browsing-history, camera, or microphone APIs.
+Optional host patterns let Chrome request a particular image origin when needed; they do not grant every website at installation. The extension does not request Chrome's cookies, history, camera, or microphone permissions, and it does not read or store your password or payment details.
 
 Saved carts, saved settings, and the additional purchase formats introduce no new Chrome permissions. Store integration tests use isolated fixtures; they do not operate on a user's personal Bullseye account or complete a live purchase.
 
 ## Cart product photographs
 
 Cart thumbnails and enlarged previews request public product photographs from shop.bullseyeglass.com or cdn.shopify.com, with referrer information omitted. These requests carry no photo-palette image or customer information. cart-photos.json records the public image sources. clear-cart.json contains additional clear-glass purchase variants for the cart only; they are not added to automatic photo matching.
+
+## Sharing
+
+The developer receives no data from the extension. Information leaves your browser only for the features below, and only as far as each feature needs:
+
+- **Bullseye's website.** Checking sign-in and product details, signing in, copying your cart, and sending or emptying your cart use shop.bullseyeglass.com inside your own signed-in browser session. Bullseye's own privacy practices apply to its site.
+- **Image hosts.** When you choose a web image, the extension downloads that one image from the site that hosts it, with credentials omitted.
+- **Product photos.** Cart thumbnails and previews come from Bullseye's and Shopify's image servers, with referrer information omitted.
+
+## Your choices and deleting data
+
+- Delete a palette from **Load palettes**, or a cart from **Saved carts**. Deleting a local record does not change Bullseye's cart.
+- **Remove image** clears the current photo, its palette, and any pending image handoff.
+- **Back up my data** saves your settings, palettes, photos, saved carts and working cart to a file you keep. Nothing is uploaded.
+- Uninstalling the extension removes its local Chrome storage and IndexedDB.
+
+## Changes to this policy
+
+When this policy changes, the date and version at the top change with it.
+
+## Contact
+
+For questions about this policy or your data, open an issue at https://github.com/Keyslah/Colors_for_Bullseye_Glass/issues.

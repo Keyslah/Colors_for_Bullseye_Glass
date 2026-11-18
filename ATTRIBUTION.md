@@ -6,7 +6,7 @@ The product photographs in `extension/assets/glass/` are **© Bullseye Glass Co.
 
 - [Bullseye Product Image Library](https://www.bullseyeglass.com/about-our-glass/product-image-library/)
 - [Product Image Library conditions](https://bullseyeglass.photodeck.com/-/galleries/product-image-library)
-- [Exact sources and processing record](https://github.com/Keyslah/Bullseye-Palette-Picker/blob/main/docs/catalog-sources.md)
+- [Exact sources and processing record](https://github.com/Keyslah/Colors_for_Bullseye_Glass/blob/main/docs/catalog-sources.md)
 
 Bullseye's published conditions require attribution and restrict the use of its product images to promoting Bullseye products. Do not treat these photographs as MIT-licensed assets. Do not rebrand or watermark them. Bullseye's trademarks belong to their respective owner. The extension's four-tile icon is original project artwork and is not Bullseye's company logo.
 

@@ -13,7 +13,7 @@ Everything needed to publish **Colors for Bullseye Glass v0.6.9** on the Chrome 
 
 Upload `Colors-for-Bullseye-Glass-v0.6.9.zip`. It has `manifest.json` at its root.
 
-- Build it with `npm run package`. The file appears at `dist/Colors-for-Bullseye-Glass-v0.6.9.zip` (about 21 MB).
+- Download it from the [v0.6.9 release](https://github.com/Keyslah/Colors_for_Bullseye_Glass/releases/tag/v0.6.9), or build it with `npm run package`, which writes `dist/Colors-for-Bullseye-Glass-v0.6.9.zip` (about 21 MB).
 - `python scripts/verify-package.py` confirms the ZIP matches the tested source byte for byte.
 
 In the dashboard, click **Add new item** and upload the ZIP. The name, summary, version and icons come from `manifest.json` and cannot be edited in the dashboard.
@@ -43,7 +43,7 @@ HOW TO USE
 
 PRIVACY
 Everything runs in your browser. Images, palettes, settings and carts are stored only in your Chrome profile. No analytics, no ads, no developer server. The extension contacts shop.bullseyeglass.com (and its product-photo CDN) to check sign-in, show current product details and photos, and read, add to or empty your Bullseye cart when you ask. When you pick a web image, it downloads just that image from the site hosting it. It never reads or stores your password or payment details.
-Privacy policy: https://github.com/Keyslah/Bullseye-Palette-Picker/blob/main/PRIVACY.md
+Privacy policy: https://github.com/Keyslah/Colors_for_Bullseye_Glass/blob/main/PRIVACY.md
 
 GOOD TO KNOW
 • Thickness percentages are a photo-based estimate, not a measurement or firing recipe. Screens and lighting vary.
@@ -51,7 +51,7 @@ GOOD TO KNOW
 
 Independent project: not affiliated with, endorsed by, or sponsored by Bullseye Glass Co. Product photography © Bullseye Glass Co., used to identify and promote Bullseye products.
 Screenshot illustration © Samji illustrator, used with permission. LinkedIn: https://www.linkedin.com/in/samji-illustrator/ | Instagram: https://www.instagram.com/samji_illustrator/ | Behance: https://www.behance.net/samji_illustrator
-Source code (MIT): https://github.com/Keyslah/Bullseye-Palette-Picker
+Source code (MIT): https://github.com/Keyslah/Colors_for_Bullseye_Glass
 ```
 
 | Field | Value |
@@ -63,8 +63,8 @@ Source code (MIT): https://github.com/Keyslah/Bullseye-Palette-Picker
 | Small promo tile (440×280, optional) | `promo-small-440x280.png` (name and icon only; the store lists items that have one ahead of items that do not) |
 | Marquee promo tile | Leave empty |
 | Official URL | Leave blank (needs a site verified in Google Search Console) |
-| Homepage URL | `https://github.com/Keyslah/Bullseye-Palette-Picker` |
-| Support URL | `https://github.com/Keyslah/Bullseye-Palette-Picker/issues` |
+| Homepage URL | `https://github.com/Keyslah/Colors_for_Bullseye_Glass` |
+| Support URL | `https://github.com/Keyslah/Colors_for_Bullseye_Glass/issues` |
 | Mature content | Off |
 
 The screenshot is the owner's own capture of the extension. It is scaled to fit the store's required 1280×800 size on a plain background; nothing in it is edited. It was captured before v0.6.9, so it shows the earlier, smaller thickness line.
@@ -113,13 +113,14 @@ https://shop.bullseyeglass.com/* is needed to check Bullseye sign-in, show curre
 
 **Data usage.** Google counts data that is only processed or stored on the user's device as handled data, so it must be disclosed. Suggested answers:
 
-- Check **Website content**: images the user picks from web pages (and their source URLs), the visible-page capture, and the cart contents read from Bullseye when the user clicks "Copy my Bullseye cart".
-- Leave the others unchecked. The extension collects no names or emails (the sign-in check only detects whether a customer-only page element exists), no passwords or cookies, no payment data, no messages, no location, no browsing history (only the source URL of an image the user chose), and no click or keystroke monitoring.
-- Tick all three certifications: no selling or transferring data outside approved uses, no use unrelated to the single purpose, no creditworthiness or lending use.
+- Check **Website content**: images the user picks from web pages, page captures, and the cart contents read from Bullseye when the user clicks "Copy my Bullseye cart".
+- Check **Web history**: the web address of each chosen image, and of each captured page, is saved with its palette. Match the label to the one shown in the dashboard if it differs.
+- Leave the others unchecked. The extension collects no names or emails (the sign-in check only detects whether a customer-only page element exists), no passwords or cookies, no payment data, no messages, no location, and no click or keystroke monitoring.
+- Tick each certification the dashboard shows. The policy supports each one: data is not sold, is not used for unrelated purposes, and is not used for creditworthiness or lending.
 
 These are your certifications. If you are unsure about a category, checking it is the conservative choice.
 
-**Privacy policy URL:** `https://github.com/Keyslah/Bullseye-Palette-Picker/blob/main/PRIVACY.md`
+**Privacy policy URL:** `https://github.com/Keyslah/Colors_for_Bullseye_Glass/blob/main/PRIVACY.md`
 
 `PRIVACY.md` includes the Limited Use statement the store requires. Merge it into `main` before submitting, so the URL above shows it.
 
