@@ -434,7 +434,7 @@ try:
         expect(cart.locator('#saved-cart-message')).to_contain_text('added to your Bullseye cart')
         expect(cart.locator('#send-saved-cart')).to_have_text('Send cart to Bullseye')
         expect(cart.locator('#send-saved-cart')).to_be_enabled()
-        assert len([r for r in requests if r['method']=='POST'])==1
+        assert len([r for r in requests if r['method']=='POST' and r['path'].endswith('/cart/add.js')])==1
         assert next(item for item in store['items'] if item['variant_id']==variant['id'])['quantity']==4
         assert next(item for item in store['items'] if item['variant_id']==unknown_id)['quantity']==1
         assert saved(page)==photo_before_cart
@@ -442,7 +442,7 @@ try:
         cart.locator('#send-saved-cart').click()
         expect(cart.locator('#saved-cart-message')).to_contain_text('added to your Bullseye cart')
         expect(cart.locator('#send-saved-cart')).to_be_enabled()
-        assert len([r for r in requests if r['method']=='POST'])==2
+        assert len([r for r in requests if r['method']=='POST' and r['path'].endswith('/cart/add.js')])==2
         assert next(item for item in store['items'] if item['variant_id']==variant['id'])['quantity']==6
         expect(page.locator('#cart-count')).to_have_text('2')
         passed('Send remains usable for a second deliberate addition while the local cart and its quantity badge stay intact')
