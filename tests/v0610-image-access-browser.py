@@ -76,9 +76,12 @@ try:
         window_info = popup.evaluate('async()=>{const w=await chrome.windows.getCurrent();return {id:w.id,type:w.type,focused:w.focused};}')
         assert window_info['type'] == 'popup'
         assert window_info['focused'] is True
+        # Headless Chromium can inherit the launch viewport for new windows.
+        # Also exercise a content area narrower/shorter than the requested popup.
+        popup.set_viewport_size({'width':480, 'height':440})
         assert popup.evaluate('''() => ['grant-image-access','cancel-image-access'].every(id=>{
           const r=document.getElementById(id).getBoundingClientRect();return r.top>=0 && r.bottom<=innerHeight && r.left>=0 && r.right<=innerWidth;
-        })'''), 'Permission actions must fit the actual popup viewport without scrolling.'
+        })'''), 'Permission actions must fit a compact popup viewport without scrolling.'
         popup.screenshot(path=str(OUT / 'v0610-image-access.png'), full_page=True)
         passed('A pending image automatically opens a visible, separate popup with its exact host and a prominent Allow image access button')
 

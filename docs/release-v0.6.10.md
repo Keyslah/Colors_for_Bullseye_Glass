@@ -36,4 +36,6 @@ Keep the existing Chrome installation and folder to preserve saved settings, pal
 
 ## Verification
 
+All **268 JavaScript regression tests** passed, together with native Chromium checks for the new layout and retained behavior. The installable ZIP contains **191 files**, each checked byte-for-byte against the tested source.
+
 The release gate runs JavaScript regression tests, manifest/catalog/module checks, native Chromium tests for the new controls, selection, cart layouts, permission popup and retained cart/backup behavior, and an exact-source ZIP integrity check. Browser checks use disposable profiles and store fixtures. The permission response is a controlled fixture; popup creation, foreground focus, user-click activation, image decoding and storage handoff use native Chromium APIs. The published ZIP is downloaded and checked against the tested source again.

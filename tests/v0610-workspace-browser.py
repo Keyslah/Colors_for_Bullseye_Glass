@@ -204,6 +204,7 @@ try:
                 order(page, [])
                 assert workspace(page, 'value.targets.length===0')['cart'] == []
                 page.reload()
+                expect(page.locator('#image-loaded')).to_be_visible()
                 expect(page.locator('#product-grid > [data-target-id]')).to_have_count(0)
                 passed(f'{orientation}: per-card Delete immediately removes its own swatch; Backspace can remove the final selected color without restoring the catalog')
 
