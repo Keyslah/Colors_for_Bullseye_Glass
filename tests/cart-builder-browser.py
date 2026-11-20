@@ -60,7 +60,7 @@ def prominent_send(page):
     box=button.bounding_box();width=page.viewport_size['width']
     assert box['y']<120 and box['height']>=60 and box['width']>=width-48,box
     assert button.evaluate("n=>n.parentElement.matches('.saved-cart-editor-shell') && n.parentElement.firstElementChild===n")
-    assert box['y']+box['height']<=page.locator('#cart-editor-dialog .dialog-heading').first.bounding_box()['y'],box
+    assert box['y']+box['height']<=page.locator('#cart-editor-dialog .cart-copy-tools').first.bounding_box()['y'],box
 def exact(page,pid,form,size):
     return page.evaluate('''async([pid,form,size])=>{
       const {productForForm}=await import('./lib/product-formats.js');

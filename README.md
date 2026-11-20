@@ -19,7 +19,7 @@ No compilation, API key, or Node installation is required to use the extension. 
 
 Chrome documents these [unpacked-extension steps](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
 
-**Updating an existing installation:** close picker/cart tabs, replace the files in the **same installed extension folder**, click **Reload** on its card at `chrome://extensions`, confirm **0.6.9**, then reopen the picker. Refresh Pinterest or any source page already open. Keep the existing Chrome installation and folder; do not remove and reinstall for an ordinary update. Your settings, palettes, photos, named carts and working cart remain in that installation. An unpacked extension does not automatically update when this GitHub repository changes.
+**Updating an existing installation:** close picker/cart tabs, replace the files in the **same installed extension folder**, click **Reload** on its card at `chrome://extensions`, confirm **0.6.10**, then reopen the picker. Refresh Pinterest or any source page already open. Keep the existing Chrome installation and folder; do not remove and reinstall for an ordinary update. Your settings, palettes, photos, named carts and working cart remain in that installation. An unpacked extension does not automatically update when this GitHub repository changes.
 
 The update preserves your current palette and restores named palettes as saved. To apply the new automatic sampling rules to the current image, press **Remix**. This replaces its automatic samples while keeping manually added or edited colors and their choices; existing named palettes are retained.
 
@@ -31,16 +31,16 @@ The prepared ZIP attached to the [latest release](https://github.com/Keyslah/Col
 
 - **A larger image.** Right-click an image, choose a file, paste, or capture a region. Portrait and square photos occupy the right column, with the glass list on their left. Landscape photos run above a horizontal glass strip. **Fit / Larger / Full width** controls resize the complete image without cropping it.
 - **A dot for every image color.** Automatic colors have numbered points at actual source pixels. Drag a point to resample; click another image location to add another color. Fully transparent pixels do not create false black samples.
-- **A clear way back.** Select a swatch or point to edit its hex/color, remove it, or inspect alternatives. **Matches** returns to your palette's glass matches.
-- **Choose neighboring colors.** Drag a swatch or its main card's grip to reorder the palette. With the keyboard, use **Alt + Arrow keys** on a swatch or **Arrow keys** on a focused grip; **Alt + Home/End** on a swatch or **Home/End** on a grip moves it first or last. The source dots keep their positions and update their numbers.
+- **Color actions on each card.** **Delete** sits directly above **Alternatives** and removes that color immediately. The main page always shows the palette's matches. **+ Color** opens the editor for a new custom color.
+- **Choose neighboring colors.** Click a card or its corner grip, then **Shift-click** another color to select the range. **Ctrl/Command-click** toggles individual colors. Drag a selected grip to move the group; **Delete** or **Backspace** removes selected colors. Text fields and open dialogs retain ordinary keyboard editing. **Arrow keys** on a focused grip move colors; **Home/End** moves them first or last. Source dots keep their positions and update their numbers.
 - **Compact glass comparison.** A vertical list sits left of portrait/square images; landscape images use a horizontal strip. Each card shows a real reference photo, name, estimated thickness, and a compact purchase dropdown. Codes and full information are in the photo detail view.
 - **Selected by default.** Each photo color starts with its closest eligible glass and a real option in the chosen format. Stock does not remove a selection: unavailable glass is marked beside its name. Frit prefers a 5 lb. jar; the **Default jar** control also offers 1 lb. and 5 oz. Shared matches select one package per distinct variant with one shared quantity.
-- **Editable selections.** Uncheck any glass, change its size or quantity, or choose an alternative. Moving a dot updates its automatic selection. Your unchecked choices remain unchecked while you browse, reopen the picker, or save and reload the palette. Deliberately added extras from All glass are retained.
+- **Editable selections.** Uncheck any glass, change its size or quantity, or choose an alternative. Moving a dot updates its automatic selection. Your unchecked choices remain unchecked while you browse, reopen the picker, or save and reload the palette. Previously added extras are retained.
 - **Save the complete palette.** Saved palettes include a local copy of the photo, point positions, edited colors, selected glass, purchase format, package choices, quantities, material filters, and image size. **Load palettes** is in the top toolbar. Saved entries include photo thumbnails and restore their own photo and purchase choices.
 
 The side panel and full workspace both adapt to image orientation. Portrait/square glass comparisons stay on the left; landscape comparisons run horizontally below the photo. An expanded glass reference view lets you inspect the measured samples without enlarging every list row.
 
-Some web images are hosted on a separate domain. The picker requests access to that particular image host after you select the image. File import, paste, and region capture are available when a host will not serve the image.
+Some web images are hosted on a separate domain. When access is needed, a focused **Allow image access** popup displays that image host. Click its main button to grant access and open the photo. Dismissing it keeps your current photo; the picker button reopens it. File import, paste, and region capture are available when a host will not serve the image.
 
 ## Glass format and saved settings
 
@@ -61,7 +61,9 @@ Click **Save settings** and enter a preset name to remember the glass format, pr
 
 ## Multiple saved carts
 
-**Add to Cart** adds the checked glass to the persistent working cart without a naming prompt. Open **Cart** at the top right to edit it; its badge counts total quantities, including multiple jars of one color. **Save cart** inside the workspace saves a named copy, and **Saved Carts** in its footer opens your named carts with color previews, quantities, and estimated totals.
+**Add to Cart** adds the checked glass to the persistent working cart without a naming prompt. Open **Cart** at the top right to edit it; its badge counts total quantities, including multiple jars of one color. **Save cart** beside the cart-name field saves a named copy. **Duplicate** and **Saved Carts** sit immediately after **View Bullseye cart** in the same toolbar. **Back** returns to the picker.
+
+Cart colors appear as compact boxes with the name and price above the photo and grade, size, and quantity stacked beside it. The default layout is a grid; **Single column** beside **Add Colors** keeps the boxes in one left-hand column. Add Colors includes Bullseye's major color-family buttons beside its heading, with search and material filters below.
 
 - **Edit** a cart's name, colors, selected sizes, and quantities. Add another color through its search list or remove individual items.
 - **Duplicate** creates an independent copy. Changing the copy leaves the original intact.

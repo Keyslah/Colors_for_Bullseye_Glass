@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Allow image access</title>
+    <link rel="stylesheet" href="./image-access.css">
+    <script type="module" src="./image-access.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Allow image access</h1>
+      <p id="access-description">Allow this image host so your photo can open in the palette.</p>
+      <strong id="access-host"></strong>
+      <p id="access-status" role="status" aria-live="polite"></p>
+      <button id="grant-image-access" type="button" disabled>Allow image access</button>
+      <button id="cancel-image-access" type="button">Not now</button>
+      <p class="access-alternative">You can also use Capture or choose a saved image in the picker.</p>
+    </main>
+  </body>
+</html>

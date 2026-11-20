@@ -133,7 +133,7 @@ try:
         page.wait_for_function('()=>globalThis.cartWriteHeld')
         type_quantity(second, 5)
         page.evaluate('()=>releaseCartWrite()')
-        expect(page.locator('#saved-cart-draft-status')).to_have_text('Cart kept automatically')
+        expect(page.locator('#saved-cart-draft-status')).to_have_text('')
         expect(second).to_have_value('5')
         expect(second).to_be_focused()
         second.press('Tab')

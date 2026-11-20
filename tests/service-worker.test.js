@@ -635,3 +635,60 @@ test('unconfirmed empty preserves replay guards and does not retry the store mut
   assert.equal(harness.scripts.length,1);
   assert.deepEqual(harness.local,before);
 });
+
+test('image permission windows are focused, coalesced, reusable, and recreated only after closing', async t => {
+  const harness=await workerHarness(t),created=[],focused=[],windows=new Set(),opening=deferred();
+  chrome.windows={
+    create:async options=>{created.push(options);await opening.promise;const id=40+created.length;windows.add(id);return {id};},
+    update:async(id,options)=>{if(!windows.has(id))throw new Error('Window closed');focused.push({id,...options});},
+  };
+  const pending={sourceUrl:'https://photos.example/art.png',needsPermission:true,updatedAt:123};
+  harness.session.pendingImage=pending;
+  const request={type:'OPEN_IMAGE_ACCESS',sourceUrl:pending.sourceUrl,pendingUpdatedAt:123};
+  const first=harness.send(request),second=harness.send(request);
+  await waitFor(()=>created.length===1,'Permission popup did not open.');
+  opening.resolve();
+  assert.deepEqual(await first,await second);
+  assert.equal(created.length,1);
+  assert.equal(created[0].url,chrome.runtime.getURL('image-access.html'));
+  assert.equal(created[0].type,'popup');assert.equal(created[0].focused,true);
+  await harness.send(request);
+  assert.equal(created.length,1);assert.equal(focused[0].focused,true);
+  windows.clear();await harness.send(request);
+  assert.equal(created.length,2);
+  assert.deepEqual(await harness.send({...request,pendingUpdatedAt:122}),{stale:true});
+  assert.equal(created.length,2);
+});
+
+test('a permission completion for an old or cancelled photo cannot replace the newest choice', async t => {
+  const harness=await workerHarness(t);
+  const old={sourceUrl:'https://photos.example/old.png',needsPermission:true,updatedAt:123};
+  const latest={sourceUrl:'https://photos.example/latest.png',needsPermission:true,updatedAt:124};
+  harness.session.pendingImage=latest;
+  const oldRequest={type:'FETCH_SELECTED_IMAGE',sourceUrl:old.sourceUrl,pendingUpdatedAt:old.updatedAt};
+  assert.deepEqual(await harness.send(oldRequest),{stale:true});
+  assert.equal(harness.fetchCalls.length,0);
+  assert.deepEqual(harness.session.pendingImage,latest);
+  assert.ok((await harness.send({...oldRequest,sourceUrl:latest.sourceUrl,pendingUpdatedAt:latest.updatedAt})).dataUrl);
+  assert.equal(harness.fetchCalls.length,1);
+  await harness.send({type:'CANCEL_PENDING_IMAGE'});
+  assert.deepEqual(await harness.send({...oldRequest,sourceUrl:latest.sourceUrl,pendingUpdatedAt:latest.updatedAt}),{stale:true});
+  assert.equal(harness.fetchCalls.length,1);
+});
+
+test('a new image gesture wins before its panel opening and loading publication finish', async t => {
+  const harness=await workerHarness(t),panel=deferred();
+  chrome.permissions.contains=async()=>false;
+  harness.fetchImpl=async()=>{throw new Error('Fixture image requires permission');};
+  harness.clickImage('https://photos.example/old.png');
+  await waitFor(()=>harness.session.pendingImage?.needsPermission,'Old image did not request permission.');
+  const pending=harness.session.pendingImage;
+  chrome.sidePanel.open=()=>panel.promise;
+  harness.clickImage('https://photos.example/new.png');
+  assert.equal(harness.session.pendingImage.sourceUrl,pending.sourceUrl,'New image is deliberately not published yet.');
+  assert.deepEqual(await harness.send({type:'FETCH_SELECTED_IMAGE',sourceUrl:pending.sourceUrl,pendingUpdatedAt:pending.updatedAt}),{stale:true});
+  assert.equal(harness.fetchCalls.length,1,'Old image permission must not start another download.');
+  panel.resolve();
+  await waitFor(()=>harness.session.pendingImage?.sourceUrl==='https://photos.example/new.png' && harness.session.pendingImage.needsPermission,'New image did not retain priority.');
+  assert.equal(harness.fetchCalls.length,2);
+});

@@ -12,11 +12,13 @@ const IMAGE_MENU = 'bullseye-palette-from-image';
 const CAPTURE_MENU = 'bullseye-palette-from-page';
 const MAX_DOWNLOAD = 20 * 1024 * 1024;
 let currentImageRequest = 0;
+const imageRequestEpoch = crypto.randomUUID();
 const CART_JOURNAL_KEY = 'bullseyeCartRequestsV1';
 let cartFlight = null;
 let storeRequestTabId = null;
 const WORKSPACE_KEY = 'bullseyeProjectV1';
 let workspaceSaves = Promise.resolve();
+let imageAccessWindowFlight = null;
 
 function saveWorkspace(workspace, generation) {
   if (!workspace || typeof workspace !== 'object' || Array.isArray(workspace)) throw new Error('The palette workspace is not valid.');
@@ -92,7 +94,7 @@ function publish(pendingImage, requestId = currentImageRequest) {
   // A data URL may contain megabytes. Only the reduced decoded image is stored.
   const sourceUrl = /^https?:\/\//.test(pendingImage.sourceUrl || '')
     ? pendingImage.sourceUrl.slice(0, 16000) : '';
-  return chrome.storage.session.set({pendingImage: {...pendingImage, sourceUrl, updatedAt: Date.now()}});
+  return chrome.storage.session.set({pendingImage: {...pendingImage, sourceUrl, updatedAt: Date.now(), requestKey:`${imageRequestEpoch}:${requestId}`}});
 }
 
 async function imageBlobToDataUrl(blob) {
@@ -172,6 +174,40 @@ async function cancelPendingImage() {
   ++currentImageRequest;
   await chrome.storage.session.remove('pendingImage');
   return {cancelled: true};
+}
+
+async function fetchPermittedImage(sourceUrl, pendingUpdatedAt) {
+  if (pendingUpdatedAt !== undefined) {
+    const {pendingImage} = await chrome.storage.session.get('pendingImage');
+    if (!pendingImage?.needsPermission || pendingImage.sourceUrl !== sourceUrl || pendingImage.updatedAt !== pendingUpdatedAt) return {stale:true};
+    // A newer context-menu gesture invalidates the old prompt immediately,
+    // including while Chrome is still opening the panel before publishing it.
+    // A restarted worker (generation zero) can resume its stored prompt.
+    if (currentImageRequest > 0 && pendingImage.requestKey !== `${imageRequestEpoch}:${currentImageRequest}`) return {stale:true};
+  }
+  return fetchSelectedImage(sourceUrl);
+}
+
+async function openImageAccessWindow(sourceUrl, pendingUpdatedAt) {
+  const {pendingImage} = await chrome.storage.session.get('pendingImage');
+  if (!pendingImage?.needsPermission || pendingImage.sourceUrl !== sourceUrl || pendingImage.updatedAt !== pendingUpdatedAt) return {stale:true};
+  if (!/^https?:$/.test(new URL(sourceUrl).protocol)) throw new Error('Use Capture or choose a saved image for this source.');
+  if (imageAccessWindowFlight) return imageAccessWindowFlight;
+  const opening = (async () => {
+    const {imageAccessWindowId} = await chrome.storage.session.get('imageAccessWindowId');
+    if (Number.isInteger(imageAccessWindowId)) {
+      try {
+        await chrome.windows.update(imageAccessWindowId, {focused:true, state:'normal'});
+        return {opened:true, windowId:imageAccessWindowId};
+      } catch { /* The previously opened permission window was closed. */ }
+    }
+    const popup = await chrome.windows.create({url:chrome.runtime.getURL('image-access.html'), type:'popup', focused:true, width:500, height:520});
+    await chrome.storage.session.set({imageAccessWindowId:popup.id});
+    return {opened:true, windowId:popup.id};
+  })();
+  imageAccessWindowFlight = opening;
+  try { return await opening; }
+  finally { if (imageAccessWindowFlight === opening) imageAccessWindowFlight = null; }
 }
 
 function tabLoaded(tab) {
@@ -362,7 +398,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true;
   }
   const actions = {
-    FETCH_SELECTED_IMAGE: () => fetchSelectedImage(request.sourceUrl),
+    FETCH_SELECTED_IMAGE: () => fetchPermittedImage(request.sourceUrl, request.pendingUpdatedAt),
+    OPEN_IMAGE_ACCESS: () => openImageAccessWindow(request.sourceUrl, request.pendingUpdatedAt),
     CAPTURE_VISIBLE: captureSource,
     CANCEL_PENDING_IMAGE: cancelPendingImage,
     BULLSEYE_ACCOUNT: bullseyeAccount,

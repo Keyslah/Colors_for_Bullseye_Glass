@@ -1,0 +1,71 @@
+# Purpose: verify compact workspaces, color selection and image access before releasing v0.6.10.
+# Setup: the fix/compact-workspace-v0.6.10 branch; native browser checks use disposable fixtures.
+# Writes: test artifacts; main/tag/release only after successful checks and the publish marker.
+# Constraints: no real customer session or live cart mutations; no force push; publishes once.
+name: Compact workspaces v0.6.10 verification
+on:
+  push:
+    branches: [fix/compact-workspace-v0.6.10]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: compact-v0610
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install verification tools
+        run: |
+          python -m pip install -r requirements-dev.txt playwright==1.63.0
+          python -m playwright install --with-deps chromium
+      - name: Regression and package checks
+        run: |
+          npm test
+          npm run check
+          npm run package
+          python scripts/verify-package.py
+      - name: Native compact workspace and retained behavior verification
+        run: |
+          python tests/v0610-workspace-browser.py
+          python tests/v0610-image-access-browser.py
+          python tests/v067-alternatives-browser.py
+          python tests/cart-edit-races-browser.py
+          python tests/v068-unavailable-browser.py
+          python tests/v068-navigation-browser.py
+          python tests/personal-data-browser.py
+          python scripts/verify-package.py
+      - name: Preserve screenshots and installable ZIP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compact-v0610
+          path: |
+            dist/
+            test-results/
+      - name: Publish verified v0.6.10
+        if: hashFiles('.github/v0610/PUBLISH') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(node -p "require('./extension/manifest.json').version")" = 0.6.10
+          if gh release view v0.6.10 >/dev/null 2>&1; then echo 'v0.6.10 is already published.'; exit 0; fi
+          python scripts/verify-package.py
+          git diff --exit-code
+          git fetch origin main
+          git merge-base --is-ancestor origin/main HEAD
+          git push origin HEAD:main
+          gh release create v0.6.10 dist/Colors-for-Bullseye-Glass-v0.6.10.zip --target "$(git rev-parse HEAD)" --title 'Colors for Bullseye Glass v0.6.10' --notes-file docs/release-v0.6.10.md
+          gh release download v0.6.10 --pattern Colors-for-Bullseye-Glass-v0.6.10.zip --dir test-results/published
+          python scripts/verify-package.py test-results/published/Colors-for-Bullseye-Glass-v0.6.10.zip

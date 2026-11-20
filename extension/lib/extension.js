@@ -157,6 +157,18 @@ export async function openWorkspace() {
   window.open(new URL('picker.html?workspace=1', location.href).href, '_blank', 'noopener');
 }
 
+export async function closePicker() {
+  if (hasExtension()) {
+    const tab = await chrome.tabs.getCurrent();
+    if (Number.isInteger(tab?.id)) return chrome.tabs.remove(tab.id);
+    if (typeof chrome.sidePanel?.close === 'function') {
+      const current = await chrome.windows.getCurrent();
+      return chrome.sidePanel.close({windowId:current.id});
+    }
+  }
+  window.close();
+}
+
 export async function cancelPendingImage() {
   if (!hasExtension()) return {cancelled: true};
   const result = await message('CANCEL_PENDING_IMAGE');
@@ -171,13 +183,20 @@ export async function captureVisibleImage() {
   return result;
 }
 
-export async function requestImageAccess(sourceUrl) {
+export async function openImageAccessWindow(sourceUrl, pendingUpdatedAt) {
+  if (!hasExtension()) throw new Error('Image access is available in the installed extension.');
+  const result = await message('OPEN_IMAGE_ACCESS', {sourceUrl, pendingUpdatedAt});
+  if (result?.error) throw new Error(result.error);
+  return result;
+}
+
+export async function requestImageAccess(sourceUrl, pendingUpdatedAt) {
   if (!hasExtension()) throw new Error('Host access is available in the installed extension.');
   const url = new URL(sourceUrl);
   if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Use visible-page capture or drop the image for this source.');
   const granted = await chrome.permissions.request({origins: [`${url.origin}/*`]});
   if (!granted) throw new Error('Image access was not granted. Use page capture or drop the image instead.');
-  const result = await message('FETCH_SELECTED_IMAGE', {sourceUrl});
+  const result = await message('FETCH_SELECTED_IMAGE', {sourceUrl, ...(pendingUpdatedAt === undefined ? {} : {pendingUpdatedAt})});
   if (result?.error) throw new Error(result.error);
   return result;
 }

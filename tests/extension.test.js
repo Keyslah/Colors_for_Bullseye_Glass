@@ -6,7 +6,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {cancelPendingImage, emptyBullseyeCart, getBullseyeAccount, loadState, saveState, openCartPage, openWorkspace, sendToCart, signInToBullseye, validateOrderLines} from '../extension/lib/extension.js';
+import {cancelPendingImage, closePicker, emptyBullseyeCart, getBullseyeAccount, loadState, saveState, openCartPage, openImageAccessWindow, openWorkspace, requestImageAccess, sendToCart, signInToBullseye, validateOrderLines} from '../extension/lib/extension.js';
 
 test('Copied SKU order preserves distinct real package SKUs and whole jar quantities', () => {
   assert.equal(validateOrderLines('001426-0002-F-P001 2\n001120-0002-F-OZ05\t1'), '001426-0002-F-P001 2\n001120-0002-F-OZ05 1');
@@ -251,4 +251,37 @@ test('workspace load uses the worker save barrier and rejects missing acknowledg
   result={};await assert.rejects(loadState(),/could not be read/);
   await assert.rejects(saveState({targets:[]}),/not confirmed/);
   result={error:'Storage quota reached'};await assert.rejects(saveState({targets:[]}),/Storage quota/);
+});
+
+test('image access opens a dedicated window and requests only the displayed origin inside the click', async t => {
+  const messages = [], permissions = [];
+  replaceGlobal(t,'chrome',{
+    runtime:{id:'bridge-test',sendMessage:async request=>{messages.push(request);return {opened:true};}},
+    permissions:{request:options=>{permissions.push(options);return Promise.resolve(true);}},
+  });
+  const sourceUrl='https://photos.example/art/photo.png';
+  await openImageAccessWindow(sourceUrl,123);
+  assert.deepEqual(messages,[{type:'OPEN_IMAGE_ACCESS',sourceUrl,pendingUpdatedAt:123}]);
+  const requesting=requestImageAccess(sourceUrl,123);
+  assert.deepEqual(permissions,[{origins:['https://photos.example/*']}], 'No await may precede the native permission request.');
+  await requesting;
+  assert.deepEqual(messages[1],{type:'FETCH_SELECTED_IMAGE',sourceUrl,pendingUpdatedAt:123});
+  chrome.permissions.request=async()=>false;
+  await assert.rejects(requestImageAccess(sourceUrl,123),/not granted/);
+  assert.equal(messages.length,2,'A denied permission must not download the photo.');
+});
+
+test('close picker closes only its own tab or the global side panel in its window', async t => {
+  const closed=[];
+  let currentTab={id:18};
+  replaceGlobal(t,'chrome',{
+    runtime:{id:'bridge-test'},
+    tabs:{getCurrent:async()=>currentTab,remove:async id=>closed.push({tabId:id})},
+    windows:{getCurrent:async()=>({id:7})},
+    sidePanel:{close:async options=>closed.push(options)},
+  });
+  await closePicker();
+  currentTab=undefined;
+  await closePicker();
+  assert.deepEqual(closed,[{tabId:18},{windowId:7}]);
 });
